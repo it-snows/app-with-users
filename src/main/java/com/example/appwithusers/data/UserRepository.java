@@ -28,7 +28,7 @@ public class UserRepository {
         var session = factory.openSession();
 
         try {
-            String hql = "FROM User U WHERE U.email = :email and U.password= :pwd";
+            String hql = "FROM User U WHERE U.email = :email and U.password= MD5(:pwd)";
             Query query = session.createQuery(hql);
 
             query.setParameter("email",email);
